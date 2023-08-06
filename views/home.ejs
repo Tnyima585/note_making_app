@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>TenzinNyima-NoteKeeper-App</title>
+    <style>
+      body {
+        margin: 60px auto; /* Updated margin to 60% */
+        background-color: black; /* Set background color to black */
+        color: white; /* Set text color to white */
+      }
+      .note-form {
+        margin-bottom: 23px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="my-4">New Note Keeper</h1>
+
+      <div class="row">
+        <% data.forEach(element=> { %>
+
+        <div class="col-md-4 my-2"> <!-- Updated col-md-6 to col-md-3 -->
+          <form class="note-form" action="/update" method="post">
+            <div class="form-group">
+              <input type="number" name="noteId" value="<%= element.noteId %>" hidden />
+            </div>
+
+            <div class="form-group">
+              <textarea
+                class="form-control"
+                cols="30"
+                rows="6"
+                placeholder="Type Here..."
+                name="noteContent"
+              ><%= element.noteContent %></textarea>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary mr-2" type="submit">Update</button>
+              <button class="btn btn-danger" type="submit" formaction="/delete">Delete</button>
+            </div>
+          </form>
+        </div>
+
+        <% }) %>
+      </div>
+
+      <h1 class="my-4">Add Your Note</h1>
+      <form action="/" method="post">
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            style="width: 50%"
+            cols="30"
+            rows="6"
+            placeholder="Type Here"
+            name="noteContent"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" type="submit">ADD NOTE</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
