@@ -5,7 +5,6 @@ const route = require("./route");
 const app = express();
 
 app.set("view engine", "ejs");
-app
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
